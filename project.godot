@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go there are tool-specific.
+; For reference, the JSON schema for the file format is in
+; https://docs.godotengine.org/en/stable/getting_started/introduction/first_steps/project_structure.html#convert-godot-3-to-4
+
+config_version=5
+
+[application]
+
+config/name="Life"
+config/version="0.1.0"
+config/description="A fantasy multiplayer life simulation with reincarnation mechanics."
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.2")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[physics]
+
+physics/2d/default_gravity=0.0
+
+[network]
+
+multiplayer/mpapi/max_peer_warnings=0

@@ -1,0 +1,42 @@
+# Godot
+*.tscn.import
+*.mesh.import
+*.import
+*.gd.import
+export.json
+export_presets.cfg
+
+# Build artifacts
+bin/
+build/
+dist/
+*.exe
+*.pdb
+*.dll
+*.so
+*.dylib
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Node modules (if using GDScript plugins)
+node_modules/
+package-lock.json
+
+# Godot specific
+.godot/
+*.tres~
+*.tscn~

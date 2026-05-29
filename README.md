@@ -1,104 +1,187 @@
-__Build Status:__ [![Build status](https://build.powershell.org/guestAuth/app/rest/builds/buildType:(id:Pester_TestPester)/statusIcon)](https://build.powershell.org/project.html?projectId=Pester&tab=projectOverview&guest=1)
+# 🎮 Life: A Fantasy Multiplayer Life Simulation
 
-Pester 3.0 has been released!  To see a list of changes in this version, refer to the [What's New in Pester 3.0?](https://github.com/pester/Pester/wiki/What's-New-in-Pester-3.0) Wiki page.
+**Life** is a collaborative multiplayer fantasy life simulation where players experience the world as different creatures across reincarnation cycles. Play as an Angel, Demon, Dragon, Elf, Necromancy creature, Dwarf, Human, or Goblin—each with unique abilities, needs, and challenges.
+
+## 🌟 Core Features
+
+- **Reincarnation System**: Die and respawn as a different random race (weighted by rarity)
+- **8 Playable Races**: Angels, Demons, Dragons, Elves, Necromancy creatures, Dwarfs, Humans, Goblins
+- **Needs-Based Gameplay**: Manage hunger, energy, social needs, and alignment
+- **Shared Multiplayer World**: Live alongside other players in persistent fantasy realms
+- **Emergent Storytelling**: Natural conflicts and collaborations based on race lore
+- **Dynamic Population**: Humans dominate (~80%), rarer races offer unique experiences
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Godot 4.x** (download from [godotengine.org](https://godotengine.org))
+- **Git** for version control
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/destinybruno005-png/life-game.git
+cd life-game
+
+# Open in Godot 4
+# 1. Launch Godot
+# 2. Click "Open Project" → Select this folder
+# 3. Click "Edit" to open the editor
+```
+
+### Running the Game
+
+1. **Open `scenes/main/Main.tscn`** in the Godot editor
+2. **Press F5** or click the **Play** button to run
+3. **Select a race** from the Race Selector UI
+4. **Explore the village**, manage your needs, and interact with other players
+
+## 📖 Documentation
+
+- **[GAME_DESIGN.md](./GAME_DESIGN.md)** – Detailed game mechanics, races, progression
+- **[DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md)** – Phase-by-phase development plan
+- **[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)** – Technical architecture and systems
+- **[docs/API_REFERENCE.md](./docs/API_REFERENCE.md)** – GDScript API for core systems
+
+## 🎮 Gameplay Overview
+
+### Choose Your Race
+At start or after death, you're randomly assigned a race (weighted by population):
+
+| Race | Population | Strength | Special Trait |
+|------|-----------|----------|---------------|
+| **Humans** | 80% | Medium | Versatile, adaptable, great at forming societies |
+| **Goblins** | 8% | Low | Chaotic, inventive, pack tactics |
+| **Dwarfs** | 4% | Medium-High | Mining, forging, sturdy builds |
+| **Necromancy** | 2% | High | Undead, unique needs, raise minions |
+| **Elves** | 1.5% | High | Long lifespan, nature magic, fine crafting |
+| **Dragons** | 0.75% | Very High | Hoarding, flying, territorial |
+| **Demons** | 0.5% | Very High | High magic, moral alignment, power spikes |
+| **Angels** | 0.25% | Extreme | Rarest, healing/light, community duties |
+
+### Daily Needs
+Manage four core needs to survive and thrive:
+
+- **Hunger**: Find food or cook meals
+- **Energy**: Rest and sleep
+- **Social**: Interact with other players
+- **Alignment**: Act according to your race's moral alignment (good for Angels, evil for Demons)
+
+### Progression
+- **Skills**: Learn race-specific abilities (Dragon hoarding, Elf crafting, Dwarf mining)
+- **Relationships**: Form bonds with other players, build families, create legacies
+- **Housing**: Customize your home (styles vary by race)
+- **Economy**: Trade, gather resources, establish a career
+
+### Death & Reincarnation
+When you die (old age, combat, accidents), you respawn as a **new random race**. Your previous character's legacy remains (buildings, children, stories) but you experience a fresh life from birth.
+
+## 🏗️ Architecture
+
+### Core Systems
+
+1. **RaceManager** – Handles race definitions, abilities, stat modifiers
+2. **ReincarnationSystem** – Weighted random spawning, death mechanics, respawn logic
+3. **NeedsSystem** – Tracks hunger, energy, social, alignment; triggers events when depleted
+4. **CharacterController** – Player input, movement, animation, interaction
+5. **MultiplayerManager** – Lobbies, server sync, player spawning
+6. **NetworkSync** – Real-time position, animation, needs synchronization
+
+### Data Flow
+
+```
+Player Input → CharacterController
+             ↓
+         Movement & Actions
+             ↓
+    NeedsSystem (decay over time)
+             ↓
+         World State
+             ↓
+    NetworkSync (to other players)
+             ↓
+         UI Updates (HUD, needs bars)
+```
+
+## 📦 Dependencies
+
+- **Godot 4.x** (built-in multiplayer support)
+- **No external plugins required** (uses built-in GDScript, MultiplayerAPI, etc.)
+
+## 🛠️ Development
+
+### Building from Source
+
+```bash
+# Install Godot 4.x
+# Clone repo
+git clone https://github.com/destinybruno005-png/life-game.git
+
+# Open in Godot editor
+# Make changes to scripts and scenes
+# Commit and push:
+git add .
+git commit -m "Describe your changes"
+git push origin main
+```
+
+### Running Tests
+
+```gdscript
+# Tests are in tests/ directory
+# Run via Godot's testing framework or manually verify in-game
+```
+
+## 🎨 Art & Assets
+
+**Current Status**: Placeholder assets (colored squares for races)
+
+**To-Do**:
+- [ ] Commission or create race-specific character models
+- [ ] Design housing styles per race
+- [ ] Create environment tilesets
+- [ ] Audio: Ambient music, SFX (footsteps, eating, building)
+
+Recommended approaches:
+- **Pixel Art**: Itch.io free packs, aseprite for animation
+- **Low-Poly 3D**: Blender + Godot FBX export
+- **Modular Rigging**: MakeHuman or Unity Store assets adapted for Godot
+
+## 🤝 Contributing
+
+We welcome contributions! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit changes (`git commit -m "Add feature"`)
+4. Push to branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+See [DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md) for planned features and current priorities.
+
+## 📜 License
+
+This project is licensed under the **MIT License** – see [LICENSE](./LICENSE) file for details.
+
+## 👥 Credits
+
+**Created by**: destinybruno005-png
+**Concept & Design**: Based on the "Life" fantasy simulation manuscript
+**Engine**: Godot 4.x
+
+## 🔗 Links
+
+- [Godot Engine](https://godotengine.org)
+- [GDScript Documentation](https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/index.html)
+- [Godot Multiplayer Guide](https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html)
+
+## 📧 Support
+
+For bugs, feature requests, or questions:
+- Open an **Issue** on GitHub
+- Check existing issues first to avoid duplicates
 
 ---
 
-Pester
-=======
-Pester provides a framework for **running unit tests to execute and validate PowerShell commands from within PowerShell**. Pester consists of a simple set of functions that expose a testing domain-specific language (DSL) for isolating, running, evaluating and reporting the results of PowerShell commands.
-
-Pester tests can execute any command or script that is accessible to a Pester test file. This can include functions, cmdlets, modules and scripts. Pester can be run in *ad-hoc* style in a console or **it can be integrated into the build scripts of a continuous integration (CI) system**.
-
-**Pester also contains a powerful set of mocking functions** in which tests mimic any command functionality within the tested PowerShell code.
-
-A Pester Test
--------------
-BuildChanges.ps1
-
-```powershell
-
-function Build ($version) {
-  write-host "A build was run for version: $version"
-}
-
-function BuildIfChanged {
-  $thisVersion=Get-Version
-  $nextVersion=Get-NextVersion
-  if($thisVersion -ne $nextVersion) {Build $nextVersion}
-  return $nextVersion
-}
-```
-
-BuildChanges.Tests.ps1
-
-```powershell
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
-$sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
-. "$here\$sut"
-
-Describe "BuildIfChanged" {
-  Context "When there are changes" {
-    Mock Get-Version {return 1.1}
-    Mock Get-NextVersion {return 1.2}
-    Mock Build {} -Verifiable -ParameterFilter {$version -eq 1.2}
-
-    $result = BuildIfChanged
-
-      It "Builds the next version" {
-          Assert-VerifiableMocks
-      }
-      It "Returns the next version number" {
-          $result | Should Be 1.2
-      }
-    }
-  Context "When there are no changes" {
-    Mock Get-Version -MockWith {return 1.1}
-    Mock Get-NextVersion -MockWith {return 1.1}
-    Mock Build {}
-
-    $result = BuildIfChanged
-
-      It "Should not build the next version" {
-          Assert-MockCalled Build -Times 0 -ParameterFilter {$version -eq 1.1}
-      }
-    }
-}
-```
-
-Running Tests
--------------
-    C:\PS> Invoke-Pester
-
-This will run all tests inside of files named `*.Tests.ps1` recursively from the current directory and print a report of all failing and passing test results to the console.
-
-    C:\PS> Invoke-Pester -TestName BuildIfChanged
-
-You can also run specific tests by using the `-TestName` parameter of the `Invoke-Pester` command. The above example runs all tests with a `Describe` block named `BuildIfChanged`. If you want to run multiple tests, you can pass a string array into the `-TestName` parameter, similar to the following example:
-
-    C:\PS> Invoke-Pester -TestName BuildIfChanged, BaconShouldBeCrispy
-
-Continuous Integration with Pester
------------------------------------
-
-Pester integrates well with almost any build automation solution.  There are several options for this integration:
-
-- The `-OutputFile` parameter allows you to export data about the test execution.  Currently, this parameter allows you to produce NUnit-style XML output, which any modern CI solution should be able to read.
-- The `-PassThru` parameter can be used if your CI solution supports running PowerShell code directly.  After Pester finishes running, check the FailedCount property on the object to determine whether any tests failed, and take action from there.
-- The `-EnableExit` switch causes Pester to exit the current PowerShell session with an error code. This error code will be the number of failed tests; 0 indicates success.
-
-As an example, there is also a file named `Pester.bat` in the `bin` folder which shows how you might integrate with a CI solution that does not support running PowerShell directly.  By wrapping a call to `Invoke-Pester` in a batch file, and making sure that batch file returns a non-zero exit code if any tests fail, you can still use Pester even when limited to cmd.exe commands in your CI jobs.
-
-Whenever possible, it's better to run Invoke-Pester directly (either in an interactive PowerShell session, or using CI software that supports running PowerShell steps in jobs). This is the method that we test and support in our releases.
-
-For Further Learning:
------------------------------------
-* [Getting started with Pester](http://www.powershellmagazine.com/2014/03/12/get-started-with-pester-powershell-unit-testing-framework/)
-* [Testing your scripts with Pester, Assertions and more](http://www.powershellmagazine.com/2014/03/27/testing-your-powershell-scripts-with-pester-assertions-and-more/)
-* [Pester Wiki](https://github.com/pester/Pester/wiki)
-* [Google Discussion Group](https://groups.google.com/forum/?fromgroups#!forum/pester)
-* `C:\PS> Import-Module ./pester.psm1; Get-Help about_pester`
-* Microsoft's PowerShell test suite itself is being converted into Pester tests. [See the PowerShell-Tests repository.](https://github.com/PowerShell/PowerShell-Tests)
-* Note: The following two links were for Pester v1.0.  The syntax shown, particularly for performing assertions with Should, is no longer applicable to later versions of Pester.
-    * [powershell-bdd-testing-pester-screencast](http://scottmuc.com/blog/development/powershell-bdd-testing-pester-screencast/)
-    * [pester-bdd-for-the-system-administrator](http://scottmuc.com/blog/development/pester-bdd-for-the-system-administrator/)
+**Start your new life today! 🌍✨**
